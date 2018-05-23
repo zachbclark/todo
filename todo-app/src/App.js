@@ -3,17 +3,35 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+  constructor(props){
+    super(props);
+    this.state = {
+      term: '',
+      items: []
+    }
+    this.apiUrl = 'https://5b05b15d8be5840014ce4654.mockapi.io/items';
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(event) {
+    this.setState({ term: event.target.value });
+  }
+
+  render(){
+    return(
+      <div className="App"> 
+        <header className="App-header"> 
+          <img src={logo} className="App-logo" alt="logo" /> 
+          <h1 className="App-title">Todo List</h1> 
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <h3 className="App-search">Search</h3>
+        <input 
+          value={this.state.term}
+          onChange={this.onChange}
+          className="App-input"
+        />
+      </div> 
+
     );
   }
 }

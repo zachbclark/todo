@@ -18,8 +18,15 @@
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.App-search {
+  font-size: 1.25em;
+}
+
+.App-input {
+  /* padding: 3px 10px;
+  margin: 20px; */
+  box-sizing: border-box;
+  width: 18%;
 }
 
 @keyframes App-logo-spin {
