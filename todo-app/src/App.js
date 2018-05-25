@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import List from './List';
-import { Card, CardHeader, CardBody, CardFooter } from "react-simple-card";
 import logo from './guy-fieri.png';
 import './App.css';
 
