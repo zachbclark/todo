@@ -1,9 +1,10 @@
 import React from 'react';
+import './List.css';
 
 const List = ({ items }) => (
-  <li>
+  <ul className="ListItem">
     { items && items.map((item, index) => <li key={index}>{item}</li>) }
-  </li>
+  </ul>
   );
 
 export default List;
