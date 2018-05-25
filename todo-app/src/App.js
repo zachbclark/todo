@@ -1,67 +1,98 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import List from './List';
+import { Card, CardHeader, CardBody, CardFooter } from "react-simple-card";
+import logo from './guy-fieri.png';
+import './App.css';
 
-class App extends Component {
-  constructor(props){
+export default class App extends Component {
+  constructor(props) {
     super(props);
     this.state = {
-      items: [
-        'Oranges',
-        'Oranges',
-        'Oranges',
-      ],
-      todo: ''
-    }
-    this.apiUrl = 'https://5b05b15d8be5840014ce4654.mockapi.io/items';
-    this.addToList = this.addToList.bind(this);
-    this.onChange = this.onChange.bind(this);
+      todo: '',
+      items: []
+    };
   }
 
-
-  addToList(todo){
-    const items = this.state.items.concat({
-      todo,
-      key: Date.now()
+  componentWillMount() {
+    fetch('https://5b05b15d8be5840014ce4654.mockapi.io/items', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then((res) => res.json())
+    .then(( data ) => {
+      this.setState({
+        items: data.map(({ name }) => name)
+      });
     });
-    this.setState({ items });
   }
 
-  onChange(e){
-    this.setState({todo: e.target.value})
+  componentDidMount() {
+    fetch('https://5b05b15d8be5840014ce4654.mockapi.io/items', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then((res) => res.json())
+    .then(( data ) => {
+      this.setState({
+        listId: data.id
+      });
+    });
   }
 
-  // componentDidMount(){
-  //   // Make HTTP reques with Axios
-  //   axios.get(this.apiUrl)
-  //     .then((res) => {
-  //       // Set state with result
-  //       this.setState({data:res.data});
-  //     });
-  // }
+  onChange = (event) => {
+    this.setState({ todo: event.target.value });
+  }
 
-  render(){
-    return(
-      <div className="App"> 
+  onSubmit = (event) => {
+    event.preventDefault();
+    const { listId, todo } = this.state;
+
+    fetch('https://5b05b15d8be5840014ce4654.mockapi.io/items', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+          name: todo
+      })
+    })
+    .then(() => {
+      return fetch(`https://5b05b15d8be5840014ce4654.mockapi.io/items`, {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        }
+      }).then((res) => res.json())
+    })
+    .then((data) => {
+      this.setState({
+        items: data.map(({ name }) => name)
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
         <header className="App-header"> 
           <img src={logo} className="App-logo" alt="logo" /> 
           <h1 className="App-title">Todo List</h1> 
-        </header>
-        <h3 className="App-search">Search</h3>
-        <form onSubmit={this.addToList}>
+        </header> 
+        <h3 className="App-search"></h3>
+        <form className="App" onSubmit={this.onSubmit}>
           <input
-            className="App-input"
-            value={this.state.todo}
-            onChange={this.onChange}
+            className="App-input" 
+            value={this.state.todo} 
+            onChange={this.onChange} 
           />
-          <button>Add</button>
+          <button className="button">Add</button>
         </form>
-        <List items={this.state.items}/>
-      </div> 
-
+        <List items={this.state.items} />
+      </div>
     );
   }
 }
-
-export default App;
