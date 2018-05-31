@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardBody } from "react-simple-card";
 import './List.css';
 
 // const List = ({ items }) => (
@@ -9,11 +8,9 @@ import './List.css';
 //   );
 
 const CardTemplate = (item) => (
-  <Card>
-    <CardBody className="ListItem">
+    <div className="Card">
       <p>{item.children}</p>
-    </CardBody>
-  </Card>
+    </div>
   );
 
   const List = ({ items }) => (
@@ -21,5 +18,16 @@ const CardTemplate = (item) => (
       { items && items.map((item, index) => <CardTemplate key={index}>{item}</CardTemplate>) }
     </ul>
     );
+
+  // const defaultStyles = {
+  //   width: "10%",
+  //   display: "block",
+  //   position: "relative",
+  //   borderRadius: "4px",
+  //   marginBottom: "10px",
+  //   marginLeft: "auto",
+  //   marginRight: "auto",
+  //   border: "1px solid #ccc",
+  // };
 
 export default List;

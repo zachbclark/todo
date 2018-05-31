@@ -1,5 +1,10 @@
-.ListItem {
-    list-style-type: none;
-    padding: 20px;
-    margin: 110;
-  }
+.Card {
+  width: 15%;
+  display: block;
+  position: relative;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ccc;
+};
