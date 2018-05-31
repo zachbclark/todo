@@ -37,7 +37,7 @@ export default class App extends Component {
     .then((res) => res.json())
     .then(( data ) => {
       this.setState({
-        listId: data.id
+        todoId: data.id
       });
     });
   }
@@ -48,7 +48,7 @@ export default class App extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    const { listId, todo } = this.state;
+    const { todoId, todo } = this.state;
 
     fetch('https://5b05b15d8be5840014ce4654.mockapi.io/items', {
       method: 'POST',
@@ -72,6 +72,7 @@ export default class App extends Component {
         items: data.map(({ name }) => name)
       });
     });
+    this.setState({ todo: '' });
   }
 
   render() {

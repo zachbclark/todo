@@ -2,22 +2,24 @@ import React from 'react';
 import { Card, CardBody } from "react-simple-card";
 import './List.css';
 
-const List = ({ items }) => (
-  <ul className="ListItem">
-    { items && items.map((item, index) => <li key={index}>{item}</li>) }
-  </ul>
-  );
+// const List = ({ items }) => (
+//   <ul className="ListItem">
+//     { items && items.map((item, index) => <li key={index}>{item}</li>) }
+//   </ul>
+//   );
 
-const CardTemplate = ({ name }) => (
+const CardTemplate = (item) => (
   <Card>
-    <CardBody>
-      {name}
+    <CardBody className="ListItem">
+      <p>{item.children}</p>
     </CardBody>
   </Card>
   );
 
-  const PrettyList = ({ items }) => (
-    items.map(item => <CardTemplate>{items}</CardTemplate>)  
-  );
+  const List = ({ items }) => (
+    <ul>
+      { items && items.map((item, index) => <CardTemplate key={index}>{item}</CardTemplate>) }
+    </ul>
+    );
 
 export default List;
