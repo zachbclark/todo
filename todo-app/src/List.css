@@ -1,5 +1,5 @@
 .Card {
-  width: 15%;
+  width: 13%;
   display: block;
   position: relative;
   border-radius: 4px;
@@ -8,3 +8,7 @@
   margin-right: auto;
   border: 1px solid #ccc;
 };
+
+.Button-logo {
+  height: 10px;
+}

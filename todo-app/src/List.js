@@ -1,33 +1,25 @@
 import React from 'react';
 import './List.css';
+import logo from './guy-fieri.png';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCheckCircle'
 
-// const List = ({ items }) => (
-//   <ul className="ListItem">
-//     { items && items.map((item, index) => <li key={index}>{item}</li>) }
-//   </ul>
-//   );
-
-const CardTemplate = (item) => (
+const Card = (item) => (
     <div className="Card">
+      <FontAwesomeIcon icon={faCoffee} size="lg" style={Stylez}/>
       <p>{item.children}</p>
     </div>
-  );
+);
 
-  const List = ({ items }) => (
-    <ul>
-      { items && items.map((item, index) => <CardTemplate key={index}>{item}</CardTemplate>) }
-    </ul>
-    );
+const Stylez = {
+  marginTop:"10px",
+  marginBottom:"-5px"
+}
 
-  // const defaultStyles = {
-  //   width: "10%",
-  //   display: "block",
-  //   position: "relative",
-  //   borderRadius: "4px",
-  //   marginBottom: "10px",
-  //   marginLeft: "auto",
-  //   marginRight: "auto",
-  //   border: "1px solid #ccc",
-  // };
+const List = ({ items }) => (
+  <ul>
+    { items && items.map((item, index) => <Card key={index}>{item}</Card>) }
+  </ul>
+);
 
 export default List;

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import List from './List';
 import logo from './guy-fieri.png';
 import './App.css';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
+
 
 export default class App extends Component {
   constructor(props) {
@@ -74,6 +77,14 @@ export default class App extends Component {
     });
     this.setState({ todo: '' });
   }
+
+  // render() {
+  //   return (
+  //     <div>
+  //       <FontAwesomeIcon icon={faCoffee} />
+  //     </div>
+  //   );
+  // }
 
   render() {
     return (
