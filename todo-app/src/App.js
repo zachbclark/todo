@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import List from './List';
+import List from './components/List';
 import logo from './guy-fieri.png';
 import './App.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -77,14 +77,6 @@ export default class App extends Component {
     });
     this.setState({ todo: '' });
   }
-
-  // render() {
-  //   return (
-  //     <div>
-  //       <FontAwesomeIcon icon={faCoffee} />
-  //     </div>
-  //   );
-  // }
 
   render() {
     return (
